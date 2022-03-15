@@ -1,0 +1,28 @@
+suppress_output: false
+show_progress: true
+operation: "FS" # cardinality of features
+output_dir: results/test/reasoner/features_c2d
+timeout: 1800
+max_memory: 8000
+number_of_runs: 1
+repeating_parameters:
+  - file: "/Smarch/toybox_0_7_5"
+cmd_calls:
+  - name: ddnnife + c2d
+    commands:
+      - 'solvers/ddnnife ddnnf/c2d{file}.dimacs.nnf -c -n 1'
+    print_parameters:
+      - file
+    instances:
+      - default_parameters:
+          memory: '8000'
+        parameters: []
+  - name: query-dnnf + c2d
+    commands:
+      - 'solvers/query-dnnf ddnnf/c2d{file}.dimacs.nnf cnf{file}.dimacs'
+    print_parameters:
+      - file
+    instances:
+      - default_parameters:
+          memory: '8000'
+        parameters: []

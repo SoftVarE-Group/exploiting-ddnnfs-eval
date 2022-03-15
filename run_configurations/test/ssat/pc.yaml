@@ -1,0 +1,39 @@
+suppress_output: false
+show_progress: true
+operation: "PC" # cardinality of partial configurations (needs an extra file)
+seed: 42
+config_information: "[(2, 1, True), (5, 1, True), (10, 1, True), (20, 1, True), (50, 1, True)]" # list of (length of config, number of configs, satisfiable?)
+output_dir: results/test/ssat/pc
+timeout: 1800
+max_memory: 8000
+number_of_runs: 1
+repeating_parameters:
+  - file: "cnf/Smarch/toybox_0_7_5.dimacs"
+cmd_calls:
+  - name: sharpSAT
+    commands:
+      - 'solvers/sharpSAT -cs {memory} {file}'
+    print_parameters:
+      - file
+    instances:
+      - default_parameters:
+          memory: '8000'
+        parameters: []
+  - name: countAntom
+    commands:
+      - 'solvers/countAntom --noThreads=1 --memSize={memory} {file}'
+    print_parameters:
+      - file
+    instances:
+      - default_parameters:
+          memory: '8000'
+        parameters: []
+  - name: ganak
+    commands:
+      - 'solvers/ganak -cs {memory} {file}'
+    print_parameters:
+      - file
+    instances:
+      - default_parameters:
+          memory: '8000'
+        parameters: []

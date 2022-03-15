@@ -1,0 +1,81 @@
+suppress_output: true
+show_progress: true
+operation: "FS" # cardinality of features
+output_dir: results/confidential/reasoner/features_c2d
+timeout: 1800
+max_memory: 8000
+number_of_runs: 50
+repeating_parameters:
+  - file: "/CDL/am31_sim"
+  - file: "/CDL/ea2468"
+  - file: "/CDL/p2106"
+  - file: "/KConfig/axTLS"
+  - file: "/KConfig/busybox-1.18.0"
+  - file: "/KConfig/embtoolkit"
+  - file: "/KConfig/uClibc"
+  - file: "/KConfig/uClinux-base"
+  - file: "/KConfig/uClinux-distribution"
+  - file: "/Smarch/7z"
+  - file: "/Smarch/BerkeleyDBC"
+  - file: "/Smarch/Dune"
+  - file: "/Smarch/HiPAcc"
+  - file: "/Smarch/JHipster"
+  - file: "/Smarch/JavaGC"
+  - file: "/Smarch/LLVM"
+  - file: "/Smarch/Polly"
+  - file: "/Smarch/VP9"
+  - file: "/Smarch/X264"
+  - file: "/Smarch/adderII"
+  - file: "/Smarch/at91sam7sek"
+  - file: "/Smarch/axTLS"
+  - file: "/Smarch/axtls_2_1_4"
+  - file: "/Smarch/busybox-1.18.0"
+  - file: "/Smarch/busybox_1_28_0"
+  - file: "/Smarch/ecos-icse11"
+  - file: "/Smarch/embtoolkit"
+  - file: "/Smarch/fiasco"
+  - file: "/Smarch/fiasco_17_10"
+  - file: "/Smarch/integrator_arm9"
+  - file: "/Smarch/lrzip"
+  - file: "/Smarch/m5272c3"
+  - file: "/Smarch/olpce2294"
+  - file: "/Smarch/pati"
+  - file: "/Smarch/phycore229x"
+  - file: "/Smarch/ref4955"
+  - file: "/Smarch/se77x9"
+  - file: "/Smarch/toybox"
+  - file: "/Smarch/toybox_0_7_5"
+  - file: "/Smarch/uClibc-ng_1_0_29"
+  - file: "/Smarch/uClinux-config"
+  - file: "/Smarch/uClinux"
+  - file: "/automotive01/automotive01"
+  - file: "/automotive02/automotive2_4"
+  - file: "/featureide_examples/berkeleydb"
+  - file: "/financial_services/financialServices_2018-05-09"
+  - file: "/confidential/automotive03/03"
+  - file: "/confidential/automotive03/automotive03"
+  - file: "/confidential/automotive03/automotive03b"
+  - file: "/confidential/automotive04/04"
+  - file: "/confidential/automotive06/automotive06"
+  - file: "/confidential/automotive06/automotive06b"
+  - file: "/confidential/automotive07/automotive07"
+  - file: "/confidential/automotive07/automotive07b"
+cmd_calls:
+  - name: ddnnife + c2d
+    commands:
+      - 'solvers/ddnnife ddnnf/c2d{file}.dimacs.nnf -c -n 1'
+    print_parameters:
+      - file
+    instances:
+      - default_parameters:
+          memory: '8000'
+        parameters: []
+  - name: query-dnnf + c2d
+    commands:
+      - 'solvers/query-dnnf ddnnf/c2d{file}.dimacs.nnf cnf{file}.dimacs'
+    print_parameters:
+      - file
+    instances:
+      - default_parameters:
+          memory: '8000'
+        parameters: []
