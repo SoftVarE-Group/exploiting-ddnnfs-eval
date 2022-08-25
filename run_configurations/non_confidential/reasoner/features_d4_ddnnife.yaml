@@ -1,0 +1,66 @@
+suppress_output: true
+show_progress: true
+operation: "FS" # cardinality of features
+output_dir: results/non_confidential/reasoner/features_d4_ddnnife
+timeout: 1800
+max_memory: 8000
+number_of_runs: 50
+repeating_parameters:
+  - file: "CDL/am31_sim.dimacs"
+  - file: "CDL/ea2468.dimacs"
+  - file: "CDL/p2106.dimacs"
+  - file: "KConfig/axTLS.dimacs"
+  - file: "KConfig/busybox-1.18.0.dimacs"
+  - file: "KConfig/embtoolkit.dimacs"
+  - file: "KConfig/uClibc.dimacs"
+  - file: "KConfig/uClinux-base.dimacs"
+  - file: "KConfig/uClinux-distribution.dimacs"
+  - file: "Smarch/7z.dimacs"
+  - file: "Smarch/BerkeleyDBC.dimacs"
+  - file: "Smarch/Dune.dimacs"
+  - file: "Smarch/HiPAcc.dimacs"
+  - file: "Smarch/JHipster.dimacs"
+  - file: "Smarch/JavaGC.dimacs"
+  - file: "Smarch/LLVM.dimacs"
+  - file: "Smarch/Polly.dimacs"
+  - file: "Smarch/VP9.dimacs"
+  - file: "Smarch/X264.dimacs"
+  - file: "Smarch/adderII.dimacs"
+  - file: "Smarch/at91sam7sek.dimacs"
+  - file: "Smarch/axTLS.dimacs"
+  - file: "Smarch/axtls_2_1_4.dimacs"
+  - file: "Smarch/busybox-1.18.0.dimacs"
+  - file: "Smarch/busybox_1_28_0.dimacs"
+  - file: "Smarch/ecos-icse11.dimacs"
+  - file: "Smarch/embtoolkit.dimacs"
+  - file: "Smarch/fiasco.dimacs"
+  - file: "Smarch/fiasco_17_10.dimacs"
+  - file: "Smarch/freebsd-icse11.dimacs"
+  - file: "Smarch/integrator_arm9.dimacs"
+  - file: "Smarch/lrzip.dimacs"
+  - file: "Smarch/m5272c3.dimacs"
+  - file: "Smarch/olpce2294.dimacs"
+  - file: "Smarch/pati.dimacs"
+  - file: "Smarch/phycore229x.dimacs"
+  - file: "Smarch/ref4955.dimacs"
+  - file: "Smarch/se77x9.dimacs"
+  - file: "Smarch/toybox.dimacs"
+  - file: "Smarch/toybox_0_7_5.dimacs"
+  - file: "Smarch/uClibc-ng_1_0_29.dimacs"
+  - file: "Smarch/uClinux-config.dimacs"
+  - file: "Smarch/uClinux.dimacs"
+  - file: "automotive01/automotive01.dimacs"
+  - file: "automotive02/automotive2_4.dimacs"
+  - file: "featureide_examples/berkeleydb.dimacs"
+  - file: "financial_services/financialServices_2018-05-09.dimacs"
+cmd_calls:
+  - name: ddnnife + d4
+    commands:
+      - './solvers/ddnnife ./ddnnf/d4_new/{file}.nnf -c -n 1 -o'
+      - 'cnf/{file}'
+    print_parameters:
+      - file
+    instances:
+      - default_parameters:
+          memory: '8000'
+        parameters: []

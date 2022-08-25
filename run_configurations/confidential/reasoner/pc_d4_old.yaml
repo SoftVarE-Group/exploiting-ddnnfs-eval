@@ -1,0 +1,75 @@
+suppress_output: true
+show_progress: true
+operation: "PC" # cardinality of partial configurations (needs an extra file)
+seed: 42
+config_information: "[(2, 50, True), (5, 50, True), (10, 50, True), (20, 50, True), (50, 50, True)]" # list of (length of config, number of configs, satisfiable?)
+output_dir: results/confidential/reasoner/pc_d4_old
+timeout: 1800
+max_memory: 8000
+number_of_runs: 50
+repeating_parameters:
+  - file: "/CDL/am31_sim"
+  - file: "/CDL/ea2468"
+  - file: "/CDL/p2106"
+  - file: "/KConfig/axTLS"
+  - file: "/KConfig/busybox-1.18.0"
+  - file: "/KConfig/embtoolkit"
+  - file: "/KConfig/uClibc"
+  - file: "/KConfig/uClinux-base"
+  - file: "/KConfig/uClinux-distribution"
+  - file: "/Smarch/7z"
+  - file: "/Smarch/BerkeleyDBC"
+  - file: "/Smarch/Dune"
+  - file: "/Smarch/HiPAcc"
+  - file: "/Smarch/JHipster"
+  - file: "/Smarch/JavaGC"
+  - file: "/Smarch/LLVM"
+  - file: "/Smarch/Polly"
+  - file: "/Smarch/VP9"
+  - file: "/Smarch/X264"
+  - file: "/Smarch/adderII"
+  - file: "/Smarch/at91sam7sek"
+  - file: "/Smarch/axTLS"
+  - file: "/Smarch/axtls_2_1_4"
+  - file: "/Smarch/busybox-1.18.0"
+  - file: "/Smarch/busybox_1_28_0"
+  - file: "/Smarch/ecos-icse11"
+  - file: "/Smarch/embtoolkit"
+  - file: "/Smarch/fiasco"
+  - file: "/Smarch/fiasco_17_10"
+  - file: "/Smarch/freebsd-icse11"
+  - file: "/Smarch/integrator_arm9"
+  - file: "/Smarch/lrzip"
+  - file: "/Smarch/m5272c3"
+  - file: "/Smarch/olpce2294"
+  - file: "/Smarch/pati"
+  - file: "/Smarch/phycore229x"
+  - file: "/Smarch/ref4955"
+  - file: "/Smarch/se77x9"
+  - file: "/Smarch/toybox"
+  - file: "/Smarch/toybox_0_7_5"
+  - file: "/Smarch/uClibc-ng_1_0_29"
+  - file: "/Smarch/uClinux-config"
+  - file: "/Smarch/uClinux"
+  - file: "/automotive01/automotive01"
+  - file: "/automotive02/automotive2_4"
+  - file: "/featureide_examples/berkeleydb"
+  - file: "/financial_services/financialServices_2018-05-09"
+  - file: "/confidential/automotive03/03"
+  - file: "/confidential/automotive03/automotive03a"
+  - file: "/confidential/automotive03/automotive03b"
+  - file: "/confidential/automotive04/04"
+  - file: "/confidential/automotive06/automotive06a"
+  - file: "/confidential/automotive06/automotive06b"
+  - file: "/confidential/automotive07/automotive07a"
+  - file: "/confidential/automotive07/automotive07b"
+cmd_calls:
+  - name: query-dnnf + d4_old
+    commands:
+      - 'solvers/query-dnnf ddnnf/d4_old{file}.dimacs.nnf config{file}.config'
+    print_parameters:
+      - file
+    instances:
+      - default_parameters:
+          memory: '8000'
+        parameters: []

@@ -1,0 +1,21 @@
+suppress_output: false
+show_progress: true
+operation: "PC" # cardinality of partial configurations (needs an extra file)
+seed: 42
+config_information: "[(2, 1, True), (5, 1, True), (10, 1, True), (20, 1, True), (50, 1, True)]" # list of (length of config, number of configs, satisfiable?)
+output_dir: results/test/reasoner/pc_d4_old
+timeout: 1800
+max_memory: 8000
+number_of_runs: 1
+repeating_parameters:
+  - file: "/Smarch/toybox_0_7_5"
+cmd_calls:
+  - name: query-dnnf + d4
+    commands:
+      - 'solvers/query-dnnf ddnnf/d4{file}.dimacs.nnf config{file}.config'
+    print_parameters:
+      - file
+    instances:
+      - default_parameters:
+          memory: '8000'
+        parameters: []
